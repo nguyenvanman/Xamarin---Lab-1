@@ -16,14 +16,9 @@ namespace Exercise6
             var secondEdge = Convert.ToInt32(Console.ReadLine());
             Console.Write("Enter the third edge: ");
             var thirdEdge = Convert.ToInt32(Console.ReadLine());
-            if (IsEdgesOfTriangle(firstEdge, secondEdge, thirdEdge))
-            {
-                Console.WriteLine(GetTypeOfTriangle(firstEdge, secondEdge, thirdEdge));
-            }
-            else
-            {
-                Console.WriteLine("Is not a triangle!");
-            }
+            Console.WriteLine("Type: " + GetTypeOfTriangle(firstEdge, secondEdge, thirdEdge));
+            Console.WriteLine("Perimeter: " + CalculatePerimeter(firstEdge, secondEdge, thirdEdge));
+            Console.WriteLine("Area: " + CalculateArea(firstEdge, secondEdge, thirdEdge));
             Console.ReadKey();
         }
         static bool IsEdgesOfTriangle(int firstEdge, int secondEdge, int thirdEdge)
@@ -31,8 +26,29 @@ namespace Exercise6
             return (firstEdge + secondEdge > thirdEdge && secondEdge + thirdEdge > firstEdge &&
                     thirdEdge + firstEdge > secondEdge);
         }
+
+        static int CalculatePerimeter(int firstEdge, int secondEdge, int thirdEdge)
+        {
+            if (IsEdgesOfTriangle(firstEdge, secondEdge, thirdEdge))
+            {
+                return firstEdge + secondEdge + thirdEdge;
+            }
+            return 0;
+        }
+        static int CalculateArea(int firstEdge, int secondEdge, int thirdEdge)
+        {
+            var perimeter = CalculatePerimeter(firstEdge, secondEdge, thirdEdge);
+            var area = (int)Math.Sqrt(perimeter / 2 * (perimeter / 2- firstEdge) * (perimeter / 2 - secondEdge) *
+                                 (perimeter / 2- thirdEdge));
+            return area;
+
+        }
         static string GetTypeOfTriangle(int firstEdge, int secondEdge, int thirdEdge)
         {
+            if (!IsEdgesOfTriangle(firstEdge, secondEdge, thirdEdge))
+            {
+                return "Not a triangle";
+            }
             if (firstEdge == secondEdge && secondEdge == thirdEdge)
             {
                 return "Equilateral Triangle";
