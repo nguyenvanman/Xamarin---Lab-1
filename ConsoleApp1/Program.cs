@@ -10,20 +10,43 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            int num = Convert.ToInt32(Console.ReadLine());
-            if (num == 1) Console.WriteLine("Sunday");
-            else if (num == 2) Console.WriteLine("Monday");
-            else if (num == 3) Console.WriteLine("Tuesday");
-            else if (num == 4) Console.WriteLine("Wednesday");
-            else if (num == 5) Console.WriteLine("Thursday");
-            else if (num == 6) Console.WriteLine("Friday");
-            else if (num == 7) Console.WriteLine("Saturday");
+            Console.Write("Enter a number: ");
+            int number = Convert.ToInt32(Console.ReadLine());
+            //1. if_else
+            if (number == 1)
+            {
+                Console.WriteLine("Sunday");
+            }
+            else if (number == 2)
+            {
+                Console.WriteLine("Monday");
+            }
+            else if (number == 3)
+            {
+                Console.WriteLine("Tuesday");
+            }
+            else if (number == 4)
+            {
+                Console.WriteLine("Wednesday");
+            }
+            else if (number == 5)
+            {
+                Console.WriteLine("Thursday");
+            }
+            else if (number == 6)
+            {
+                Console.WriteLine("Friday");
+            }
+            else if (number == 7)
+            {
+                Console.WriteLine("Saturday");
+            }
             else
             {
                 Console.WriteLine("Invalid day");
             }
-
-            switch (num)
+            //2. switch_case
+            switch (number)
             {
                 case 1:
                     Console.WriteLine("Sunday");
@@ -49,9 +72,20 @@ namespace ConsoleApp1
                 default:
                     Console.WriteLine("Invalid day");
                     break;
-
             }
+            //3.Array
+            String[] listDays = { "Invalid day", "Sunday", "Monday", "Tuesday", "Wedndesday", "Thursday", "Friday", "Saturday" };
+            if (number >= 1 && number <= 7)
+            {
+                Console.WriteLine(listDays[number]);
+            }
+            else
+            {
+                Console.WriteLine(listDays[0]);
+            }
+           
             Console.ReadKey();
         }
+        
     }
 }
