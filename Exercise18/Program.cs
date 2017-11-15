@@ -27,7 +27,6 @@ namespace Exercise18
                 Console.WriteLine();
             }
         }
-
         static long CalculateFactorial(int n)
         {
             if (n == 0)
