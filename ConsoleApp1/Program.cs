@@ -8,11 +8,8 @@ namespace ConsoleApp1
 {
     class Program
     {
-        static void Main(string[] args)
+        static void ShowDayOfWeekUsingIfElse(int number)
         {
-            Console.Write("Enter a number: ");
-            int number = Convert.ToInt32(Console.ReadLine());
-            //1. if_else
             if (number == 1)
             {
                 Console.WriteLine("Sunday");
@@ -45,7 +42,9 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("Invalid day");
             }
-            //2. switch_case
+        }
+        static void ShowDayOfWeekUsingSwitchCase(int number)
+        {
             switch (number)
             {
                 case 1:
@@ -73,7 +72,9 @@ namespace ConsoleApp1
                     Console.WriteLine("Invalid day");
                     break;
             }
-            //3.Array
+        }
+        static void ShowDayOfWeekUsingArray(int number)
+        {
             String[] listDays = { "Invalid day", "Sunday", "Monday", "Tuesday", "Wedndesday", "Thursday", "Friday", "Saturday" };
             if (number >= 1 && number <= 7)
             {
@@ -83,9 +84,15 @@ namespace ConsoleApp1
             {
                 Console.WriteLine(listDays[0]);
             }
-           
+        }
+        static void Main(string[] args)
+        {
+            Console.Write("Enter a number: ");
+            var number = Convert.ToInt32(Console.ReadLine());
+            ShowDayOfWeekUsingIfElse(number);
+            ShowDayOfWeekUsingSwitchCase(number);
+            ShowDayOfWeekUsingArray(number);
             Console.ReadKey();
         }
-        
     }
 }

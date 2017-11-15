@@ -11,7 +11,7 @@ namespace Exercise8
         static bool IsPrimeNumber(int number)
         {
             if (number < 2) return false;
-            for (int i = 2; i <= Math.Sqrt(number); i++)
+            for (int i = (int)Math.Sqrt(number); i >= 2; i--)
             {
                 if (number % i == 0) return false;
             }

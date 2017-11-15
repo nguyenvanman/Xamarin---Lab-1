@@ -10,30 +10,34 @@ namespace Exercise6
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter the first edge: ");
-            var firstEdge = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Enter the second edge: ");
-            var secondEdge = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Enter the third edge: ");
-            var thirdEdge = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Type: " + GetTypeOfTriangle(firstEdge, secondEdge, thirdEdge));
-            Console.WriteLine("Perimeter: " + CalculatePerimeter(firstEdge, secondEdge, thirdEdge));
-            Console.WriteLine("Area: " + CalculateArea(firstEdge, secondEdge, thirdEdge));
+            var firstEdge = ReadInputInt("Enter the first edge: ");
+            var secondEdge = ReadInputInt("Enter the second edge: ");
+            var thirdEdge = ReadInputInt("Enter the third edge: ");
+            if (IsEdgesOfTriangle(firstEdge, secondEdge, secondEdge))
+            {
+                Console.WriteLine("Type: " + GetTypeOfTriangle(firstEdge, secondEdge, thirdEdge));
+                Console.WriteLine("Perimeter: " + CalculatePerimeter(firstEdge, secondEdge, thirdEdge));
+                Console.WriteLine("Area: " + CalculateArea(firstEdge, secondEdge, thirdEdge));
+            }
+            else
+            {
+                Console.WriteLine("Not a triangle");
+            }
             Console.ReadKey();
+        }
+        static int ReadInputInt(string input)
+        {
+            Console.Write(input);
+            return Convert.ToInt32(Console.ReadLine());
         }
         static bool IsEdgesOfTriangle(int firstEdge, int secondEdge, int thirdEdge)
         {
             return (firstEdge + secondEdge > thirdEdge && secondEdge + thirdEdge > firstEdge &&
                     thirdEdge + firstEdge > secondEdge);
         }
-
         static int CalculatePerimeter(int firstEdge, int secondEdge, int thirdEdge)
         {
-            if (IsEdgesOfTriangle(firstEdge, secondEdge, thirdEdge))
-            {
-                return firstEdge + secondEdge + thirdEdge;
-            }
-            return 0;
+            return firstEdge + secondEdge + thirdEdge;
         }
         static int CalculateArea(int firstEdge, int secondEdge, int thirdEdge)
         {
@@ -45,10 +49,6 @@ namespace Exercise6
         }
         static string GetTypeOfTriangle(int firstEdge, int secondEdge, int thirdEdge)
         {
-            if (!IsEdgesOfTriangle(firstEdge, secondEdge, thirdEdge))
-            {
-                return "Not a triangle";
-            }
             if (firstEdge == secondEdge && secondEdge == thirdEdge)
             {
                 return "Equilateral Triangle";
@@ -57,18 +57,14 @@ namespace Exercise6
             {
                 return "Isosceles Triangle";
             }
-            var maxEdge = (firstEdge > secondEdge && firstEdge > thirdEdge)
-                ? firstEdge
-                : (secondEdge > thirdEdge)
-                    ? secondEdge
-                    : thirdEdge;
-            var minEdge = (firstEdge < secondEdge && firstEdge < thirdEdge)
-                ? firstEdge
-                : (secondEdge < thirdEdge)
-                ? secondEdge
-                : thirdEdge;
-            var edge = firstEdge + secondEdge + thirdEdge - maxEdge - minEdge;
-            if (maxEdge * maxEdge == edge * edge + minEdge * minEdge) return "Square Triangle";
+            var sqrFirst = firstEdge * firstEdge;
+            var sqrSecond = secondEdge * secondEdge;
+            var sqrThird = thirdEdge * thirdEdge;
+            if ((sqrFirst + sqrSecond - sqrThird) * (sqrFirst - sqrSecond + sqrThird) *
+                (-sqrFirst + sqrSecond + sqrThird) == 0)
+            {
+                return "Square Triangle";
+            }
             return "Normal Triangle";
         }
     }
