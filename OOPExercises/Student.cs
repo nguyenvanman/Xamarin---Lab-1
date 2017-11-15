@@ -8,33 +8,14 @@ namespace OOPExercises
 {
     class Student
     {
-        private string name;
-        private DateTime birthday;
-        private double score;
-
-        public string Name
-        {
-            get => name;
-            set => name = value;
-        }
-
-        public DateTime Birthday
-        {
-            get => birthday;
-            set => birthday = value;
-        }
-
-        public double Score
-        {
-            get => score;
-            set => score = value;
-        }
-
+        public string Name { get; set; }
+        public DateTime Birthday { get; set; }
+        public double Score { get; set; }
         public Student(string name, DateTime birthday, double score)
         {
-            this.name = name;
-            this.birthday = birthday;
-            this.score = score;
+            Name = name;
+            Birthday = birthday;
+            Score = score;
         }
     }
 }

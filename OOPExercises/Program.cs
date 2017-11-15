@@ -31,13 +31,6 @@ namespace OOPExercises
             }
             Console.ReadKey();
         }
-
-        static void SwapTwosStudents(Student student1, Student student2)
-        {
-            Student tempStudent = new Student(student1.Name, student1.Birthday, student1.Score);
-            student1 = new Student(student2.Name, student2.Birthday, student2.Score);
-            student2 = new Student(tempStudent.Name, tempStudent.Birthday, tempStudent.Score);
-        }
         static void SortListStudentsByScore(List<Student> listStudents)
         {
             for (int i = 0; i < listStudents.Count - 1; i++)
@@ -55,9 +48,10 @@ namespace OOPExercises
         }
         static DateTime GetDateFromString(string strDate)
         {
-            var date = Convert.ToInt32(strDate[0].ToString() + strDate[1]);
-            var month = Convert.ToInt32(strDate[3].ToString() + strDate[4]);
-            var year = Convert.ToInt32(strDate[6].ToString() + strDate[7] + strDate[8] + strDate[9]);
+            var tokens = strDate.Split('/', '-');
+            var date = Convert.ToInt32(tokens[0]);
+            var month = Convert.ToInt32(tokens[1]);
+            var year = Convert.ToInt32(tokens[2]);
             return new DateTime(year, month, date);
         }
     }
