@@ -30,8 +30,8 @@ namespace OOPExercise3
 
         public double GetArea()
         {
-            var perimeter = GetPerimeter();
-            return Math.Sqrt(perimeter / 2 * (perimeter / 2 - A) * (perimeter / 2 - B) * (perimeter / 2 - C));
+            var halfPerimeter = GetPerimeter() / 2;
+            return Math.Sqrt(halfPerimeter * (halfPerimeter - A) * (halfPerimeter - B) * (halfPerimeter - C));
         }
 
         public string GetTrianglesType()
@@ -41,24 +41,25 @@ namespace OOPExercise3
             var sqrC = C * C;
             if (A == B && B == C)
             {
-                return "";
+                return "equilateral triangle";
             }
+            bool isSquare = (sqrA + sqrB - sqrC) * (sqrA - sqrB + sqrC) * (-sqrA + sqrB + sqrB) == 0;
             if (A == B|| B == C || C == A)
             {
-                if ((sqrA + sqrB - sqrC) * (sqrA - sqrB + sqrC) * (-sqrA + sqrB + sqrB) == 0)
+                if (isSquare)
                 {
-                    return "vuong can";
+                    return "isosceles and right triangle";
                 }
                 else
                 {
-                    return "can";
+                    return "isosceles triangle";
                 }
             }
-            if ((sqrA + sqrB - sqrC) * (sqrA - sqrB + sqrC) * (-sqrA + sqrB + sqrB) == 0)
+            if (isSquare)
             {
-                return "vuong";
+                return "right triangle";
             }
-            return "thuong";
+            return "normal triangle";
         }
     }
 }
