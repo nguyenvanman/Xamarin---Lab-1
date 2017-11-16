@@ -43,7 +43,7 @@ namespace OOPExercise3
             {
                 return "equilateral triangle";
             }
-            bool isSquare = (sqrA + sqrB - sqrC) * (sqrA - sqrB + sqrC) * (-sqrA + sqrB + sqrB) == 0;
+            var isSquare = (sqrA + sqrB - sqrC) * (sqrA - sqrB + sqrC) * (-sqrA + sqrB + sqrB) == 0;
             if (A == B|| B == C || C == A)
             {
                 if (isSquare)
