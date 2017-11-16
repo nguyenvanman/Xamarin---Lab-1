@@ -10,6 +10,18 @@ namespace OOPExercise3
     {
         static void Main(string[] args)
         {
+            Triangle triangle = new Triangle(35, 4, 5);
+            if (triangle.IsTriangle() == true)
+            {
+                Console.WriteLine("Type: " + triangle.GetTrianglesType());
+                Console.WriteLine("Perimeter: " + triangle.GetPerimeter());
+                Console.WriteLine("Area: " + triangle.GetArea());
+            }
+            else
+            {
+                Console.WriteLine("Not a triangle");
+            }
+            Console.ReadKey();
         }
     }
 }
